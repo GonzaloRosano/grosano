@@ -7,11 +7,19 @@ type Theme = "light" | "dark";
 
 export function ThemeScript() {
   const script = `
-    try {
-      var stored = localStorage.getItem("theme");
-      var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
-    } catch (e) {}
+    (function () {
+      function syncTheme() {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      }
+      syncTheme();
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) syncTheme();
+      });
+    })();
   `;
   return <script dangerouslySetInnerHTML={{ __html: script }} />;
 }
@@ -20,8 +28,13 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme") as Theme | null;
-    setTheme(current ?? "light");
+    function sync() {
+      const current = document.documentElement.getAttribute("data-theme") as Theme | null;
+      setTheme(current ?? "light");
+    }
+    sync();
+    window.addEventListener("pageshow", sync);
+    return () => window.removeEventListener("pageshow", sync);
   }, []);
 
   function toggle() {
