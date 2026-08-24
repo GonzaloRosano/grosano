@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { EnvelopeSimple, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { IntroReveal } from "@/components/IntroReveal";
 import { MagneticLink } from "@/components/MagneticLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LangToggle } from "@/components/LangToggle";
 import { ScrollCue } from "@/components/ScrollCue";
 import { ProfileReadme } from "@/components/ProfileReadme";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -16,16 +18,18 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <ThemeToggle />
+      <LangToggle />
 
       <main className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
         <IntroReveal>
           <div className="relative z-10 flex flex-col items-center text-center">
-            <img
+            <Image
               data-reveal
               src={`https://github.com/${GITHUB_USER}.png`}
               alt="Gonzalo Rosano"
               width={96}
               height={96}
+              unoptimized
               className="h-24 w-24 rounded-full border border-border"
             />
 
@@ -37,7 +41,8 @@ export default function Home() {
             </h1>
 
             <p data-reveal className="mt-3 text-base text-muted sm:text-lg">
-              Software Developer
+              <span className="lang-en">Software Developer</span>
+              <span className="lang-es">Desarrollador de Software</span>
             </p>
 
             <div data-reveal className="mt-10 flex items-center gap-5">

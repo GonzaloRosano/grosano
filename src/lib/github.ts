@@ -16,6 +16,7 @@ export type Project = {
   language: string | null;
   stars: number;
   updatedAt: string;
+  topics: string[];
 };
 
 type GithubRepo = {
@@ -27,6 +28,7 @@ type GithubRepo = {
   updated_at: string;
   fork: boolean;
   archived: boolean;
+  topics?: string[];
 };
 
 export async function getPublicProjects(): Promise<Project[]> {
@@ -52,16 +54,20 @@ export async function getPublicProjects(): Promise<Project[]> {
         language: repo.language,
         stars: repo.stargazers_count,
         updatedAt: repo.updated_at,
+        topics: repo.topics ?? [],
       }));
   } catch {
     return [];
   }
 }
 
-export async function getProjectReadme(repo: string): Promise<string | null> {
+export async function getProjectReadme(
+  repo: string,
+  filename: string = "README.md"
+): Promise<string | null> {
   try {
     const res = await fetch(
-      `https://api.github.com/repos/${GITHUB_USER}/${repo}/readme`,
+      `https://api.github.com/repos/${GITHUB_USER}/${repo}/contents/${filename}`,
       { headers: authHeaders({ Accept: "application/vnd.github.raw+json" }) }
     );
     if (!res.ok) return null;

@@ -113,3 +113,12 @@ body::-webkit-scrollbar-thumb {
   color: var(--muted) !important;
   border-left-color: var(--border) !important;
 }
+
+:root:not([data-lang="es"]) .lang-es {
+  display: none;
+}
+
+:root[data-lang="es"] .lang-en {
+  display: none;
+}
+
