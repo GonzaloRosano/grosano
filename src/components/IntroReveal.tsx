@@ -10,7 +10,11 @@ export function IntroReveal({ children }: { children: React.ReactNode }) {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reduceMotion || !ref.current) return;
+    // Si el documento no esta visible (ej. navegadores headless de screenshot),
+    // el ticker de GSAP puede no correr nunca y el contenido queda en opacity:0
+    // para siempre. En ese caso no ocultamos nada, se muestra directo.
+    const isHidden = document.visibilityState !== "visible";
+    if (reduceMotion || isHidden || !ref.current) return;
 
     const ctx = gsap.context(() => {
       const targets = gsap.utils.toArray<HTMLElement>("[data-reveal]");
@@ -25,7 +29,18 @@ export function IntroReveal({ children }: { children: React.ReactNode }) {
       });
     }, ref);
 
-    return () => ctx.revert();
+    // Salvaguarda: si por lo que sea el ticker de GSAP nunca corre (ej. un
+    // navegador automatizado que lo pausa), forzamos que el contenido quede
+    // visible igual pasado un tiempo prudencial.
+    const fallback = window.setTimeout(() => {
+      const targets = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+      gsap.set(targets, { opacity: 1, y: 0 });
+    }, 2000);
+
+    return () => {
+      window.clearTimeout(fallback);
+      ctx.revert();
+    };
   }, []);
 
   return <div ref={ref}>{children}</div>;
