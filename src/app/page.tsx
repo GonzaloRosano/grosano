@@ -2,6 +2,7 @@ import { EnvelopeSimple, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { IntroReveal } from "@/components/IntroReveal";
 import { MagneticLink } from "@/components/MagneticLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { ScrollCue } from "@/components/ScrollCue";
 
 const EMAIL = "rosanogonzalo@gmail.com";
 const GITHUB_USER = "GonzaloRosano";
@@ -59,6 +60,8 @@ export default function Home() {
             </div>
           </div>
         </IntroReveal>
+
+        <ScrollCue />
       </main>
     </div>
   );
