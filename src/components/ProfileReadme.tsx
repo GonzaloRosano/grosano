@@ -25,10 +25,15 @@ const markdownClassName =
   "markdown-body mx-auto max-w-none bg-transparent! [&_p:has(img)]:flex [&_p:has(img)]:flex-wrap [&_p:has(img)]:items-center [&_p:has(img)]:gap-2 [&_img]:m-0! [&_img]:inline-block";
 
 export async function ProfileReadme() {
-  const [readmeEn, readmeEs] = await Promise.all([
+  const [fetchedEn, fetchedEs] = await Promise.all([
     getReadme("README.md"),
     getReadme("README.es.md"),
   ]);
+
+  // Si uno de los dos falla (ej. rate limit de la API en build time), mostramos
+  // el otro igual en vez de dejar la seccion vacia para ese idioma.
+  const readmeEn = fetchedEn ?? fetchedEs;
+  const readmeEs = fetchedEs ?? fetchedEn;
 
   if (!readmeEn && !readmeEs) return null;
 

@@ -26,10 +26,15 @@ export default async function ProjectPage(
 
   if (!project) notFound();
 
-  const [readmeEn, readmeEs] = await Promise.all([
+  const [fetchedEn, fetchedEs] = await Promise.all([
     getProjectReadme(repo, "README.md"),
     getProjectReadme(repo, "README.es.md"),
   ]);
+
+  // Si uno de los dos falla (ej. rate limit de la API en build time), mostramos
+  // el otro igual en vez de dejar la seccion vacia para ese idioma.
+  const readmeEn = fetchedEn ?? fetchedEs;
+  const readmeEs = fetchedEs ?? fetchedEn;
 
   return (
     <>
