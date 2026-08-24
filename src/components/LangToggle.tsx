@@ -6,11 +6,19 @@ type Lang = "es" | "en";
 
 export function LangScript() {
   const script = `
-    try {
-      var stored = localStorage.getItem("lang");
-      var lang = stored || (navigator.language && navigator.language.toLowerCase().startsWith("es") ? "es" : "en");
-      document.documentElement.setAttribute("data-lang", lang);
-    } catch (e) {}
+    (function () {
+      function syncLang() {
+        try {
+          var stored = localStorage.getItem("lang");
+          var lang = stored || (navigator.language && navigator.language.toLowerCase().startsWith("es") ? "es" : "en");
+          document.documentElement.setAttribute("data-lang", lang);
+        } catch (e) {}
+      }
+      syncLang();
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) syncLang();
+      });
+    })();
   `;
   return <script dangerouslySetInnerHTML={{ __html: script }} />;
 }
@@ -19,8 +27,13 @@ export function LangToggle() {
   const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
-    const current = document.documentElement.getAttribute("data-lang") as Lang | null;
-    if (current) setLang(current);
+    function sync() {
+      const current = document.documentElement.getAttribute("data-lang") as Lang | null;
+      if (current) setLang(current);
+    }
+    sync();
+    window.addEventListener("pageshow", sync);
+    return () => window.removeEventListener("pageshow", sync);
   }, []);
 
   function select(next: Lang) {
