@@ -17,7 +17,21 @@ export function ThemeScript() {
       }
       syncTheme();
       window.addEventListener("pageshow", function (e) {
-        if (e.persisted) syncTheme();
+        if (!e.persisted) return;
+        // La pagina restaurada del bfcache queda pintada con el tema
+        // congelado en el momento de salir; si aplicamos el nuevo tema con
+        // las transiciones normales activas se ve un parpadeo animado.
+        // Las desactivamos un frame para que el cambio sea instantaneo.
+        var style = document.createElement("style");
+        style.textContent = "*,*::before,*::after{transition:none!important}";
+        document.head.appendChild(style);
+        syncTheme();
+        window.getComputedStyle(style).opacity;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            document.head.removeChild(style);
+          });
+        });
       });
     })();
   `;
