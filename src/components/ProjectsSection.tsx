@@ -9,7 +9,8 @@ export async function ProjectsSection() {
   return (
     <section className="w-full max-w-3xl border-t border-border px-6 py-16">
       <h2 className="flex items-baseline gap-2 text-xl font-semibold tracking-tight">
-        Projects
+        <span className="lang-en">Projects</span>
+        <span className="lang-es">Proyectos</span>
         <span className="lang-en text-sm font-normal text-muted">
           {projects.length}{" "}
           {projects.length === 1 ? "public project" : "public projects"}
