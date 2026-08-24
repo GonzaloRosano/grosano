@@ -30,7 +30,7 @@ export function LangToggle() {
   }
 
   return (
-    <div className="fixed left-5 top-5 z-20 flex h-10 items-center gap-1.5 rounded-full border border-border px-3 text-xs font-semibold">
+    <div className="fixed left-5 top-5 z-20 flex h-10 items-center gap-1.5 px-3 text-xs font-semibold">
       <button
         type="button"
         onClick={() => select("en")}
