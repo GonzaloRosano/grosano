@@ -12,6 +12,8 @@
 
 </div>
 
+![Screenshot](docs/screenshot.png)
+
 ---
 
 ## 📖 About the project
