@@ -4,6 +4,7 @@ import { MagneticLink } from "@/components/MagneticLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollCue } from "@/components/ScrollCue";
 import { ProfileReadme } from "@/components/ProfileReadme";
+import { ProjectsSection } from "@/components/ProjectsSection";
 
 const EMAIL = "rosanogonzalo@gmail.com";
 const GITHUB_USER = "GonzaloRosano";
@@ -66,6 +67,7 @@ export default function Home() {
       </main>
 
       <ProfileReadme />
+      <ProjectsSection />
     </div>
   );
 }
