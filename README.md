@@ -12,8 +12,6 @@
 
 </div>
 
-![Screenshot](https://api.microlink.io/?url=http%3A%2F%2F212.28.181.170&screenshot=true&meta=false&embed=screenshot.url)
-
 ---
 
 ## 📖 About the project
