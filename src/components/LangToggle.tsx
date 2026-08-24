@@ -16,28 +16,42 @@ export function LangScript() {
 }
 
 export function LangToggle() {
-  const [lang, setLang] = useState<Lang | null>(null);
+  const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
     const current = document.documentElement.getAttribute("data-lang") as Lang | null;
-    setLang(current ?? "en");
+    if (current) setLang(current);
   }, []);
 
-  function toggle() {
-    const next: Lang = lang === "es" ? "en" : "es";
+  function select(next: Lang) {
     setLang(next);
     document.documentElement.setAttribute("data-lang", next);
     localStorage.setItem("lang", next);
   }
 
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label="Cambiar idioma"
-      className="fixed left-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border text-xs font-semibold text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]"
-    >
-      {lang === "es" ? "EN" : "ES"}
-    </button>
+    <div className="fixed left-5 top-5 z-20 flex h-10 items-center gap-1.5 rounded-full border border-border px-3 text-xs font-semibold">
+      <button
+        type="button"
+        onClick={() => select("en")}
+        aria-pressed={lang === "en"}
+        className={`underline-offset-4 transition-colors duration-200 ${
+          lang === "en" ? "text-accent underline" : "text-muted hover:text-foreground"
+        }`}
+      >
+        EN
+      </button>
+      <span className="text-border">|</span>
+      <button
+        type="button"
+        onClick={() => select("es")}
+        aria-pressed={lang === "es"}
+        className={`underline-offset-4 transition-colors duration-200 ${
+          lang === "es" ? "text-accent underline" : "text-muted hover:text-foreground"
+        }`}
+      >
+        ES
+      </button>
+    </div>
   );
 }
