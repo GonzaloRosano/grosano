@@ -1,7 +1,11 @@
 const GITHUB_USER = "GonzaloRosano";
-const EXCLUDED_REPOS = new Set([GITHUB_USER.toLowerCase(), "grosano"]);
+const EXCLUDED_REPOS = new Set([GITHUB_USER.toLowerCase()]);
 
 const DESCRIPTIONS: Record<string, { en: string; es: string }> = {
+  grosano: {
+    en: "This personal landing page",
+    es: "Esta misma landing page personal",
+  },
   aruberuto: {
     en: "Landing page for Aruberuto Makoto's online Japanese course",
     es: "Landing page para el curso de japonés online de Aruberuto Makoto",
