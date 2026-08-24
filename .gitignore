@@ -42,3 +42,4 @@ next-env.d.ts
 
 # scripts locales con datos de infraestructura, no subir
 deploy.sh
+out.tar.gz
