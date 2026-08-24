@@ -12,7 +12,7 @@
 
 </div>
 
-![Screenshot](https://raw.githubusercontent.com/GonzaloRosano/grosano/main/docs/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/GonzaloRosano/grosano/main/docs/screenshot.webp)
 
 ---
 
