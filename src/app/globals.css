@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "github-markdown-css/github-markdown-light.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -47,7 +49,9 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-main {
+main,
+.markdown-body,
+.markdown-body * {
   transition-property: background-color, border-color, color;
   transition-duration: 0.4s;
   transition-timing-function: ease;
@@ -65,4 +69,47 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--accent);
   border-radius: 999px;
   border: 2px solid var(--background);
+}
+
+.markdown-body {
+  background-color: transparent !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif !important;
+}
+
+.markdown-body a {
+  color: var(--accent) !important;
+}
+
+.markdown-body hr,
+.markdown-body h1,
+.markdown-body h2 {
+  border-color: var(--border) !important;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body kbd {
+  background-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  border-color: var(--border) !important;
+}
+
+.markdown-body table tr {
+  background-color: transparent !important;
+  border-top-color: var(--border) !important;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: color-mix(in srgb, var(--foreground) 4%, transparent) !important;
+}
+
+.markdown-body blockquote {
+  color: var(--muted) !important;
+  border-left-color: var(--border) !important;
 }

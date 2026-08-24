@@ -3,6 +3,7 @@ import { IntroReveal } from "@/components/IntroReveal";
 import { MagneticLink } from "@/components/MagneticLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollCue } from "@/components/ScrollCue";
+import { ProfileReadme } from "@/components/ProfileReadme";
 
 const EMAIL = "rosanogonzalo@gmail.com";
 const GITHUB_USER = "GonzaloRosano";
@@ -63,6 +64,8 @@ export default function Home() {
 
         <ScrollCue />
       </main>
+
+      <ProfileReadme />
     </div>
   );
 }
