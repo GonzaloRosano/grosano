@@ -31,8 +31,15 @@ export async function ProjectsSection() {
               {project.name}
             </span>
 
-            {project.description && (
-              <span className="text-sm text-muted">{project.description}</span>
+            {project.descriptionEn && (
+              <span className="lang-en text-sm text-muted">
+                {project.descriptionEn}
+              </span>
+            )}
+            {project.descriptionEs && (
+              <span className="lang-es text-sm text-muted">
+                {project.descriptionEs}
+              </span>
             )}
 
             {project.topics.length > 0 && (

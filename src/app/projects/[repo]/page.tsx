@@ -45,8 +45,15 @@ export default async function ProjectPage(
               {project.name}
             </h1>
 
-            {project.description && (
-              <p className="text-base text-muted">{project.description}</p>
+            {project.descriptionEn && (
+              <p className="lang-en text-base text-muted">
+                {project.descriptionEn}
+              </p>
+            )}
+            {project.descriptionEs && (
+              <p className="lang-es text-base text-muted">
+                {project.descriptionEs}
+              </p>
             )}
 
             <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-muted">

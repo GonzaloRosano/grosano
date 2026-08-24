@@ -1,6 +1,21 @@
 const GITHUB_USER = "GonzaloRosano";
 const EXCLUDED_REPOS = new Set([GITHUB_USER.toLowerCase(), "grosano"]);
 
+const DESCRIPTIONS: Record<string, { en: string; es: string }> = {
+  aruberuto: {
+    en: "Landing page for Aruberuto Makoto's online Japanese course",
+    es: "Landing page para el curso de japonés online de Aruberuto Makoto",
+  },
+  dfgroup: {
+    en: "Dark Feather Group website",
+    es: "Sitio web de Dark Feather Group",
+  },
+  plasmastudios: {
+    en: "Marketing site for Plasma Studios",
+    es: "Sitio de marketing de Plasma Studios",
+  },
+};
+
 function authHeaders(extra?: Record<string, string>): Record<string, string> {
   const token = process.env.GITHUB_TOKEN;
   return {
@@ -12,6 +27,8 @@ function authHeaders(extra?: Record<string, string>): Record<string, string> {
 export type Project = {
   name: string;
   description: string | null;
+  descriptionEn: string | null;
+  descriptionEs: string | null;
   homepage: string | null;
   language: string | null;
   stars: number;
@@ -47,15 +64,20 @@ export async function getPublicProjects(): Promise<Project[]> {
           !repo.archived &&
           !EXCLUDED_REPOS.has(repo.name.toLowerCase())
       )
-      .map((repo) => ({
-        name: repo.name,
-        description: repo.description,
-        homepage: repo.homepage || null,
-        language: repo.language,
-        stars: repo.stargazers_count,
-        updatedAt: repo.updated_at,
-        topics: repo.topics ?? [],
-      }));
+      .map((repo) => {
+        const dict = DESCRIPTIONS[repo.name.toLowerCase()];
+        return {
+          name: repo.name,
+          description: repo.description,
+          descriptionEn: dict?.en ?? repo.description,
+          descriptionEs: dict?.es ?? repo.description,
+          homepage: repo.homepage || null,
+          language: repo.language,
+          stars: repo.stargazers_count,
+          updatedAt: repo.updated_at,
+          topics: repo.topics ?? [],
+        };
+      });
   } catch {
     return [];
   }

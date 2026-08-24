@@ -36,7 +36,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Cambiar tema"
-      className="fixed right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]"
+      className="fixed right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]"
     >
       {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
     </button>
