@@ -1,6 +1,7 @@
 import { EnvelopeSimple, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { IntroReveal } from "@/components/IntroReveal";
 import { MagneticLink } from "@/components/MagneticLink";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const EMAIL = "rosanogonzalo@gmail.com";
 const GITHUB_USER = "GonzaloRosano";
@@ -10,51 +11,55 @@ const linkClassName =
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
-      <IntroReveal>
-        <div className="relative z-10 flex flex-col items-center text-center">
-          <img
-            data-reveal
-            src={`https://github.com/${GITHUB_USER}.png`}
-            alt="Gonzalo Rosano"
-            width={96}
-            height={96}
-            className="h-24 w-24 rounded-full border border-border"
-          />
+    <div className="flex flex-col items-center">
+      <ThemeToggle />
 
-          <h1
-            data-reveal
-            className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl"
-          >
-            Gonzalo Rosano
-          </h1>
+      <main className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
+        <IntroReveal>
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <img
+              data-reveal
+              src={`https://github.com/${GITHUB_USER}.png`}
+              alt="Gonzalo Rosano"
+              width={96}
+              height={96}
+              className="h-24 w-24 rounded-full border border-border"
+            />
 
-          <p data-reveal className="mt-3 text-base text-muted sm:text-lg">
-            Software Developer
-          </p>
-
-          <div data-reveal className="mt-10 flex items-center gap-5">
-            <MagneticLink
-              href={`mailto:${EMAIL}`}
-              ariaLabel="Enviar un email"
-              className={linkClassName}
+            <h1
+              data-reveal
+              className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl"
             >
-              <EnvelopeSimple size={18} weight="regular" />
-              Email
-            </MagneticLink>
-            <MagneticLink
-              href={`https://github.com/${GITHUB_USER}`}
-              target="_blank"
-              rel="noreferrer noopener"
-              ariaLabel="Ver perfil de GitHub"
-              className={linkClassName}
-            >
-              <GithubLogo size={18} weight="regular" />
-              GitHub
-            </MagneticLink>
+              Gonzalo Rosano
+            </h1>
+
+            <p data-reveal className="mt-3 text-base text-muted sm:text-lg">
+              Software Developer
+            </p>
+
+            <div data-reveal className="mt-10 flex items-center gap-5">
+              <MagneticLink
+                href={`mailto:${EMAIL}`}
+                ariaLabel="Enviar un email"
+                className={linkClassName}
+              >
+                <EnvelopeSimple size={18} weight="regular" />
+                Email
+              </MagneticLink>
+              <MagneticLink
+                href={`https://github.com/${GITHUB_USER}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                ariaLabel="Ver perfil de GitHub"
+                className={linkClassName}
+              >
+                <GithubLogo size={18} weight="regular" />
+                GitHub
+              </MagneticLink>
+            </div>
           </div>
-        </div>
-      </IntroReveal>
-    </main>
+        </IntroReveal>
+      </main>
+    </div>
   );
 }
