@@ -22,7 +22,9 @@ export async function ProjectsSection() {
       </h2>
 
       <div className="mt-6 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
-        {projects.map((project) => (
+        {projects.map((project) => {
+          const label = project.framework ?? project.language;
+          return (
           <a
             key={project.name}
             href={`/projects/${project.name}`}
@@ -50,13 +52,13 @@ export async function ProjectsSection() {
             )}
 
             <div className="mt-1 flex items-center gap-4 text-xs text-muted">
-              {project.language && (
+              {label && (
                 <span className="flex items-center gap-1.5">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
-                    style={{ backgroundColor: languageColor(project.language) }}
+                    style={{ backgroundColor: languageColor(label) }}
                   />
-                  {project.language}
+                  {label}
                 </span>
               )}
               {project.stars > 0 && (
@@ -67,7 +69,8 @@ export async function ProjectsSection() {
               )}
             </div>
           </a>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

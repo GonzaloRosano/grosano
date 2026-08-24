@@ -36,6 +36,8 @@ export default async function ProjectPage(
   const readmeEn = fetchedEn ?? fetchedEs;
   const readmeEs = fetchedEs ?? fetchedEn;
 
+  const techLabel = project.framework ?? project.language;
+
   return (
     <>
       <ThemeToggle />
@@ -62,13 +64,13 @@ export default async function ProjectPage(
             )}
 
             <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-muted">
-              {project.language && (
+              {techLabel && (
                 <span className="flex items-center gap-1.5">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
-                    style={{ backgroundColor: languageColor(project.language) }}
+                    style={{ backgroundColor: languageColor(techLabel) }}
                   />
-                  {project.language}
+                  {techLabel}
                 </span>
               )}
               {project.stars > 0 && (
