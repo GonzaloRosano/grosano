@@ -33,7 +33,19 @@ export function SmoothScroll() {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
+    // El ResizeObserver de Lenis (sobre <html>) no siempre detecta cambios de
+    // alto que vienen solo de contenido (imagenes, fuentes) sin resize del
+    // viewport. Si el limite de scroll queda calculado de mas chico, el
+    // usuario llega a cierto punto y no puede seguir bajando. Forzamos un
+    // recalculo cuando termina de cargar todo y cuando cambian las fuentes.
+    function resize() {
+      lenis.resize();
+    }
+    window.addEventListener("load", resize);
+    document.fonts?.ready.then(resize).catch(() => {});
+
     return () => {
+      window.removeEventListener("load", resize);
       gsap.ticker.remove(raf);
       lenis.destroy();
       window.__lenis = undefined;
