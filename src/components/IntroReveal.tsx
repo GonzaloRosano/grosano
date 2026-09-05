@@ -3,6 +3,26 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
+// Se ejecuta antes del primer paint (ver layout.tsx) para que [data-reveal]
+// arranque oculto por CSS. Sin esto, el contenido pinta visible de entrada,
+// recien en el useEffect de abajo salta a opacity:0 y desde ahi anima: se ve
+// un flash de contenido estatico seguido de un salto brusco al inicio de la
+// animacion. Las condiciones tienen que coincidir con las del useEffect.
+export function RevealScript() {
+  const script = `
+    (function () {
+      try {
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var isHidden = document.visibilityState !== "visible";
+        if (!reduceMotion && !isHidden) {
+          document.documentElement.classList.add("reveal-pending");
+        }
+      } catch (e) {}
+    })();
+  `;
+  return <script dangerouslySetInnerHTML={{ __html: script }} />;
+}
+
 export function IntroReveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
 

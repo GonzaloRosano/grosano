@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeScript } from "@/components/ThemeToggle";
 import { LangScript } from "@/components/LangToggle";
+import { RevealScript } from "@/components/IntroReveal";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <ThemeScript />
         <LangScript />
+        <RevealScript />
       </head>
       <body className="min-h-full flex flex-col">
         <SmoothScroll />

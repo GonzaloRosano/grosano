@@ -30,6 +30,7 @@ export default function Home() {
               width={96}
               height={96}
               unoptimized
+              priority
               className="h-24 w-24 rounded-full border border-border"
             />
 

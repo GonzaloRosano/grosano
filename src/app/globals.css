@@ -114,6 +114,11 @@ body::-webkit-scrollbar-thumb {
   border-left-color: var(--border) !important;
 }
 
+html.reveal-pending [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
 :root:not([data-lang="es"]) .lang-es {
   display: none;
 }
