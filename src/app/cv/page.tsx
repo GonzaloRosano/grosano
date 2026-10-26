@@ -139,7 +139,7 @@ export default function CvPage() {
 
           <div className="no-print mt-3">
             <a
-              href="/CV_Gonzalo_Rosano_EN.pdf"
+              href="/cv-gonzalo-rosano-en.pdf"
               download
               className="lang-en inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm text-white transition-opacity duration-200 hover:opacity-90"
             >
@@ -147,7 +147,7 @@ export default function CvPage() {
               <span>Download PDF</span>
             </a>
             <a
-              href="/CV_Gonzalo_Rosano.pdf"
+              href="/cv-gonzalo-rosano.pdf"
               download
               className="lang-es inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm text-white transition-opacity duration-200 hover:opacity-90"
             >
