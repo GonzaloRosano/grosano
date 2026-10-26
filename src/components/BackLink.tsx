@@ -16,7 +16,7 @@ export function BackLink() {
     <Link
       href="/"
       onClick={handleClick}
-      className="flex h-9 w-fit items-center gap-1.5 rounded-full border border-border bg-surface px-4 text-sm text-muted transition-colors duration-200 hover:border-accent hover:text-accent"
+      className="flex w-fit items-center gap-1.5 text-sm text-muted transition-colors duration-200 hover:text-accent"
     >
       <ArrowLeft size={14} />
       <span className="lang-en">Back</span>
