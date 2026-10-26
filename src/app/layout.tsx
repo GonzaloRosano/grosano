@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeScript } from "@/components/ThemeToggle";
 import { LangScript } from "@/components/LangToggle";
 import { RevealScript } from "@/components/IntroReveal";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScroll />
         <SiteNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
