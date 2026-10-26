@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     tech: "Next.js",
     isPublic: false,
     demo: "https://animalscity-rp.vercel.app",
-    image: "/projects/normativas-animals.png",
+    image: "/projects/normativas-animals.webp",
     featured: true,
   },
   {
@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
     tech: "Astro",
     isPublic: true,
     demo: "https://plasmastudios.vercel.app",
-    image: "/projects/plasmastudios.png",
+    image: "/projects/plasmastudios.webp",
     overview: {
       en: "Bilingual marketing site for a Minecraft hosting studio, built with Astro. It presents the studio and its team; the work and contact pages are still placeholders.",
       es: "Sitio de marketing bilingüe para un estudio de hosting de Minecraft, hecho con Astro. Presenta al estudio y a su equipo; las páginas de trabajo y contacto todavía son placeholders.",

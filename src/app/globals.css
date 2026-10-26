@@ -125,10 +125,27 @@ body::-webkit-scrollbar-thumb {
   border-left-color: var(--border) !important;
 }
 
-html.reveal-pending [data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
+/* Animacion de entrada en CSS puro: no espera a que cargue ni hidrate JS,
+   asi el h1 (LCP) pinta apenas llega el CSS. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
+
+html.reveal-pending [data-reveal] {
+  animation: reveal-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.1s + var(--reveal-i, 0) * 0.09s);
+}
+html.reveal-pending [data-reveal]:nth-child(2) { --reveal-i: 1; }
+html.reveal-pending [data-reveal]:nth-child(3) { --reveal-i: 2; }
+html.reveal-pending [data-reveal]:nth-child(4) { --reveal-i: 3; }
+html.reveal-pending [data-reveal]:nth-child(5) { --reveal-i: 4; }
 
 :root:not([data-lang="es"]) .lang-es {
   display: none;
