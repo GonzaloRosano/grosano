@@ -5,14 +5,14 @@ import { MagneticLink } from "@/components/MagneticLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LangToggle } from "@/components/LangToggle";
 import { ScrollCue } from "@/components/ScrollCue";
-import { ProfileReadme } from "@/components/ProfileReadme";
 import { ProjectsSection } from "@/components/ProjectsSection";
-
-const EMAIL = "rosanogonzalo@gmail.com";
-const GITHUB_USER = "GonzaloRosano";
-
-const linkClassName =
-  "flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]";
+import {
+  AboutSection,
+  ContactSection,
+  EMAIL,
+  GITHUB_USER,
+  linkClassName,
+} from "@/components/InfoSections";
 
 export default function Home() {
   return (
@@ -20,9 +20,9 @@ export default function Home() {
       <ThemeToggle />
       <LangToggle />
 
-      <main className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
+      <main className="relative flex min-h-[85dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
         <IntroReveal>
-          <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="relative z-10 flex max-w-2xl flex-col items-center text-center">
             <Image
               data-reveal
               src={`https://github.com/${GITHUB_USER}.png`}
@@ -41,12 +41,38 @@ export default function Home() {
               Gonzalo Rosano
             </h1>
 
-            <p data-reveal className="mt-3 text-base text-muted sm:text-lg">
-              <span className="lang-en">Software Developer</span>
-              <span className="lang-es">Desarrollador de Software</span>
+            <p data-reveal className="mt-4 text-lg text-foreground sm:text-xl">
+              <span className="lang-en">
+                Frontend developer building web interfaces and native desktop
+                apps.
+              </span>
+              <span className="lang-es">
+                Desarrollador frontend: interfaces web y apps de escritorio
+                nativas.
+              </span>
             </p>
 
-            <div data-reveal className="mt-10 flex items-center gap-5">
+            <p data-reveal className="mt-3 text-sm text-muted sm:text-base">
+              <span className="lang-en">
+                React · Next.js · Astro · Tauri + Rust. At Quanam, working with
+                clients in different countries.
+              </span>
+              <span className="lang-es">
+                React · Next.js · Astro · Tauri + Rust. En Quanam, trabajando
+                con clientes de distintos países.
+              </span>
+            </p>
+
+            <p
+              data-reveal
+              className="mt-6 flex items-center gap-2 text-xs text-muted"
+            >
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <span className="lang-en">Open to full-time and freelance</span>
+              <span className="lang-es">Abierto a full-time y freelance</span>
+            </p>
+
+            <div data-reveal className="mt-8 flex items-center gap-5">
               <MagneticLink
                 href={`mailto:${EMAIL}`}
                 ariaLabel="Enviar un email"
@@ -72,8 +98,9 @@ export default function Home() {
         <ScrollCue />
       </main>
 
-      <ProfileReadme />
       <ProjectsSection />
+      <AboutSection />
+      <ContactSection />
     </div>
   );
 }
