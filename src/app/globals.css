@@ -140,6 +140,10 @@ html.reveal-pending [data-reveal] {
 
 
 @media print {
+  html {
+    font-size: 13px;
+  }
+
   .no-print {
     display: none !important;
   }

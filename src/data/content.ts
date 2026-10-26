@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "Vercel"],
     tech: "Next.js",
     isPublic: false,
-    demo: "https://animalscity-ashy.vercel.app",
+    demo: "https://animalscity-rp.vercel.app",
     image: "/projects/normativas-animals.png",
     featured: true,
   },
