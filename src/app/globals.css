@@ -140,6 +140,22 @@ html.reveal-pending [data-reveal] {
 
 
 @media print {
+  :root,
+  :root[data-theme="dark"] {
+    --background: #ffffff !important;
+    --foreground: #18181b !important;
+    --muted: #5f5f68 !important;
+    --accent: #d6004f !important;
+    --border: rgb(24 24 27 / 0.14) !important;
+    --surface: #ffffff !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
   html {
     font-size: 13px;
   }
