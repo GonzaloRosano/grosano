@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     stack: ["Rust", "Go"],
     tech: "Rust",
     isPublic: true,
-    featured: true,
+    featured: false,
   },
   {
     slug: "dark-feather-chat",
@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     stack: ["Tauri", "Rust", "libsql"],
     tech: "Tauri",
     isPublic: false,
-    featured: true,
+    featured: false,
   },
   {
     slug: "normativas-animals",
