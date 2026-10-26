@@ -1,4 +1,4 @@
-import { EnvelopeSimple, FileText, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
+import { FileText, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { MagneticLink } from "@/components/MagneticLink";
 import { STACK } from "@/data/content";
 
@@ -66,52 +66,71 @@ export function AboutSection() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className={`${sectionClassName} flex min-h-[calc(100dvh-5rem)] flex-col justify-center pb-24`}>
-      <h2 className={headingClassName}>
-        <span className="lang-en">Let&apos;s talk</span>
-        <span className="lang-es">Hablemos</span>
-      </h2>
-      <p className="mt-4 max-w-xl text-muted">
-        <span className="lang-en">
-          Open to full-time roles and freelance projects.
-        </span>
-        <span className="lang-es">
-          Abierto a trabajo full-time y proyectos freelance.
-        </span>
-      </p>
-      <div className="mt-6 flex flex-wrap items-center gap-4">
-        <MagneticLink
+    <section
+      id="contact"
+      className={`${sectionClassName} flex min-h-[calc(100dvh-5rem)] flex-col pb-8`}
+    >
+      <div className="flex flex-1 flex-col justify-center">
+        <p className="text-sm font-medium text-accent">
+          <span className="lang-en">Contact</span>
+          <span className="lang-es">Contacto</span>
+        </p>
+        <h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          <span className="lang-en">Let&apos;s build something together.</span>
+          <span className="lang-es">Hagamos algo juntos.</span>
+        </h2>
+        <p className="mt-5 max-w-xl text-lg text-muted">
+          <span className="lang-en">
+            Open to full-time roles and freelance projects. Write me and I
+            will get back to you.
+          </span>
+          <span className="lang-es">
+            Abierto a trabajo full-time y proyectos freelance. Escribime y te
+            respondo.
+          </span>
+        </p>
+
+        <a
           href={`mailto:${EMAIL}`}
-          ariaLabel="Enviar un email"
-          className={linkClassName}
+          className="mt-8 w-fit break-all text-xl font-medium underline decoration-accent decoration-2 underline-offset-8 transition-colors duration-200 hover:text-accent sm:text-2xl"
         >
-          <EnvelopeSimple size={18} weight="regular" />
           {EMAIL}
-        </MagneticLink>
-        <MagneticLink
-          href={`https://github.com/${GITHUB_USER}`}
-          target="_blank"
-          rel="noreferrer noopener"
-          ariaLabel="Ver perfil de GitHub"
-          className={linkClassName}
-        >
-          <GithubLogo size={18} weight="regular" />
-          GitHub
-        </MagneticLink>
-        <MagneticLink
-          href={LINKEDIN_URL}
-          target="_blank"
-          rel="noreferrer noopener"
-          ariaLabel="Ver perfil de LinkedIn"
-          className={linkClassName}
-        >
-          <LinkedinLogo size={18} weight="regular" />
-          LinkedIn
-        </MagneticLink>
-        <MagneticLink href="/cv" ariaLabel="Ver CV" className={linkClassName}>
-          <FileText size={18} weight="regular" />
-          CV
-        </MagneticLink>
+        </a>
+
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <MagneticLink
+            href={`https://github.com/${GITHUB_USER}`}
+            target="_blank"
+            rel="noreferrer noopener"
+            ariaLabel="Ver perfil de GitHub"
+            className={linkClassName}
+          >
+            <GithubLogo size={18} weight="regular" />
+            GitHub
+          </MagneticLink>
+          <MagneticLink
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            ariaLabel="Ver perfil de LinkedIn"
+            className={linkClassName}
+          >
+            <LinkedinLogo size={18} weight="regular" />
+            LinkedIn
+          </MagneticLink>
+          <MagneticLink href="/cv" ariaLabel="Ver CV" className={linkClassName}>
+            <FileText size={18} weight="regular" />
+            CV
+          </MagneticLink>
+        </div>
+      </div>
+
+      <div className="mt-16 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted">
+        <span>© 2026 Gonzalo Rosano · Montevideo, Uruguay</span>
+        <a href="#home" className="transition-colors duration-200 hover:text-accent">
+          <span className="lang-en">Back to top</span>
+          <span className="lang-es">Volver arriba</span>
+        </a>
       </div>
     </section>
   );
