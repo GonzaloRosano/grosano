@@ -2,7 +2,7 @@
 // La pagina del proyecto ya muestra eso con datos curados, asi que se quita
 // para no repetirlo.
 const DEV_SECTIONS =
-  /^##\s+(getting started|structure|status|deploy|primeros pasos|estructura|estado|despliegue)\b/i;
+  /^##\s+[^\p{L}\p{N}\s]*\s*(getting started|structure|status|deploy|primeros pasos|estructura|estado|despliegue)\b/iu;
 
 export function cleanReadme(markdown: string): string {
   return markdown
