@@ -33,13 +33,13 @@ export function AboutSection() {
             construyo herramientas de escritorio y de terminal con Rust y Go.
           </p>
           <p className="lang-en">
-            Three years of professional experience on top of three more
-            teaching myself. I care about design systems and about the
+            Over two years of professional experience, after teaching myself
+            to code. I care about design systems and about the
             aesthetics of every project. Studying Information Technology
             Analyst at ORT Uruguay.
           </p>
           <p className="lang-es">
-            Tres años de experiencia profesional sobre otros tres de
+            Más de dos años de experiencia profesional, tras formarme como
             autodidacta. Me interesan los design systems y la estética de cada
             proyecto. Estudio Analista en Tecnologías de la Información en ORT
             Uruguay.
