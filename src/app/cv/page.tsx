@@ -8,8 +8,6 @@ import {
   MapPin,
 } from "@phosphor-icons/react/dist/ssr";
 import { BackLink } from "@/components/BackLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LangToggle } from "@/components/LangToggle";
 import { EMAIL, GITHUB_USER, LINKEDIN_URL } from "@/components/InfoSections";
 import { PROJECTS, type Bilingual } from "@/data/content";
 
@@ -86,11 +84,6 @@ const contactItem = "flex items-center gap-1.5";
 export default function CvPage() {
   return (
     <>
-      <div className="no-print">
-        <ThemeToggle />
-        <LangToggle />
-      </div>
-
       <main className="mx-auto flex w-full max-w-4xl flex-col px-6 py-16 print:py-0">
         <div className="no-print">
           <BackLink />

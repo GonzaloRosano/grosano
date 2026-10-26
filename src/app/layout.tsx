@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeScript } from "@/components/ThemeToggle";
 import { LangScript } from "@/components/LangToggle";
 import { RevealScript } from "@/components/IntroReveal";
+import { SiteNav } from "@/components/SiteNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -43,8 +44,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LangScript />
         <RevealScript />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col pb-24 lg:pb-0">
         <SmoothScroll />
+        <SiteNav />
         {children}
       </body>
     </html>

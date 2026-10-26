@@ -2,8 +2,6 @@ import Image from "next/image";
 import { EnvelopeSimple, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { IntroReveal } from "@/components/IntroReveal";
 import { MagneticLink } from "@/components/MagneticLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LangToggle } from "@/components/LangToggle";
 import { ScrollCue } from "@/components/ScrollCue";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import {
@@ -17,10 +15,7 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
-      <ThemeToggle />
-      <LangToggle />
-
-      <main className="relative flex min-h-[85dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
+      <main id="home" className="relative flex min-h-[85dvh] w-full flex-col items-center justify-center overflow-hidden px-6">
         <IntroReveal>
           <div className="relative z-10 flex max-w-2xl flex-col items-center text-center">
             <Image

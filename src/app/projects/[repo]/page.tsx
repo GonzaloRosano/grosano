@@ -11,8 +11,6 @@ import {
   ArrowSquareOut,
 } from "@phosphor-icons/react/dist/ssr";
 import { BackLink } from "@/components/BackLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LangToggle } from "@/components/LangToggle";
 import { PROJECTS } from "@/data/content";
 import { getProjectReadme } from "@/lib/github";
 import { cleanReadme } from "@/lib/readme";
@@ -79,9 +77,6 @@ export default async function ProjectPage(
 
   return (
     <>
-      <ThemeToggle />
-      <LangToggle />
-
       <main className="mx-auto flex w-full max-w-4xl flex-col px-6 py-16">
         <BackLink />
 

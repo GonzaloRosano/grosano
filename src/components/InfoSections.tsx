@@ -66,7 +66,7 @@ export function AboutSection() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className={`${sectionClassName} pb-24`}>
+    <section id="contact" className={`${sectionClassName} flex min-h-[calc(100dvh-5rem)] flex-col justify-center pb-24`}>
       <h2 className={headingClassName}>
         <span className="lang-en">Let&apos;s talk</span>
         <span className="lang-es">Hablemos</span>
