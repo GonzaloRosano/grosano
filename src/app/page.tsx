@@ -42,14 +42,8 @@ export default function Home() {
             </h1>
 
             <p data-reveal className="mt-4 text-lg text-foreground sm:text-xl">
-              <span className="lang-en">
-                Frontend developer building web interfaces and native desktop
-                apps.
-              </span>
-              <span className="lang-es">
-                Desarrollador frontend: interfaces web y apps de escritorio
-                nativas.
-              </span>
+              <span className="lang-en">Frontend developer</span>
+              <span className="lang-es">Desarrollador frontend</span>
             </p>
 
             <p
