@@ -165,7 +165,7 @@ main[id] {
 }
 
 :root[data-lang="es"] .lang-seg-thumb {
-  transform: translateX(calc(100% + 2px));
+  transform: translateX(100%);
 }
 
 :root:not([data-lang="es"]) .lang-seg-btn[data-code="en"],
