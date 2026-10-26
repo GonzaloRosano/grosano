@@ -55,7 +55,7 @@ export function LangToggle() {
           type="button"
           onClick={() => select(code)}
           aria-pressed={lang === code}
-          aria-label={code === "en" ? "English" : "Español"}
+          aria-label={code === "en" ? "EN, English" : "ES, Español"}
           data-code={code}
           className="lang-seg-btn relative z-10 flex h-8 w-10 items-center justify-center rounded-full uppercase text-muted outline-offset-2 transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
         >
