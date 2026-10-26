@@ -157,3 +157,49 @@ section[id],
 main[id] {
   scroll-margin-top: 5rem;
 }
+
+/* Selectores de idioma y tema: el estado sale de data-lang / data-theme
+   para que no parpadee al hidratar. */
+.lang-seg-thumb {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-lang="es"] .lang-seg-thumb {
+  transform: translateX(calc(100% + 2px));
+}
+
+:root:not([data-lang="es"]) .lang-seg-btn[data-code="en"],
+:root[data-lang="es"] .lang-seg-btn[data-code="es"] {
+  color: var(--accent);
+}
+
+.theme-icon {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+.theme-icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:root[data-theme="dark"] .theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:root[data-theme="dark"] .theme-icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-seg-thumb,
+  .theme-icon {
+    transition: none;
+  }
+}

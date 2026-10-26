@@ -63,9 +63,10 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Cambiar tema"
-      className="flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]"
+      className="theme-toggle relative flex h-8 w-8 items-center justify-center rounded-full bg-foreground/5 text-foreground outline-offset-2 transition-colors duration-200 hover:bg-accent/15 hover:text-accent focus-visible:outline-2 focus-visible:outline-accent active:scale-[0.96]"
     >
-      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+      <Sun size={16} weight="fill" className="theme-icon theme-icon-sun absolute" />
+      <Moon size={16} weight="fill" className="theme-icon theme-icon-moon absolute" />
     </button>
   );
 }
