@@ -97,9 +97,13 @@ export function SiteNav() {
 
   return (
     <div className="no-print">
-      <div className="fixed right-4 top-4 z-30 flex h-11 items-center gap-1 rounded-full border border-border bg-background/90 px-1.5 backdrop-blur">
-        <LangToggle />
-        <ThemeToggle />
+      <div className="pointer-events-none fixed inset-x-0 top-4 z-30">
+        <div className="mx-auto flex max-w-4xl justify-end px-6">
+          <div className="pointer-events-auto flex h-11 items-center gap-1 rounded-full border border-border bg-background/90 px-1.5 backdrop-blur">
+            <LangToggle />
+            <ThemeToggle />
+          </div>
+        </div>
       </div>
 
       <nav

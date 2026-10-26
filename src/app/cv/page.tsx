@@ -79,12 +79,13 @@ function Row({
   );
 }
 
-const contactItem = "flex items-center gap-1.5";
+const contactItem =
+  "flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 print:border-0 print:bg-transparent print:p-0";
 
 export default function CvPage() {
   return (
     <>
-      <main className="mx-auto flex w-full max-w-4xl flex-col px-6 py-16 print:py-0">
+      <main className="mx-auto flex w-full max-w-4xl flex-col px-6 pb-16 pt-24 print:py-0">
         <div className="no-print">
           <BackLink />
         </div>
@@ -103,7 +104,7 @@ export default function CvPage() {
             </span>
           </p>
 
-          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted">
+          <ul className="mt-3 flex flex-wrap gap-2 text-sm text-muted print:gap-x-5 print:gap-y-1.5">
             <li className={contactItem}>
               <MapPin size={16} />
               Montevideo, Uruguay

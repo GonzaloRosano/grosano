@@ -77,7 +77,7 @@ export default async function ProjectPage(
 
   return (
     <>
-      <main className="mx-auto flex w-full max-w-4xl flex-col px-6 py-16">
+      <main className="mx-auto flex w-full max-w-4xl flex-col px-6 pb-16 pt-24">
         <BackLink />
 
         <header className="mt-10 flex flex-col gap-4">
