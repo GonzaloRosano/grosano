@@ -1,9 +1,10 @@
-import { EnvelopeSimple, FileText, GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { EnvelopeSimple, FileText, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { MagneticLink } from "@/components/MagneticLink";
 import { STACK } from "@/data/content";
 
 export const EMAIL = "rosanogonzalo@gmail.com";
 export const GITHUB_USER = "GonzaloRosano";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/gonzalorosano/";
 
 export const linkClassName =
   "flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]";
@@ -96,6 +97,16 @@ export function ContactSection() {
         >
           <GithubLogo size={18} weight="regular" />
           GitHub
+        </MagneticLink>
+        <MagneticLink
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noreferrer noopener"
+          ariaLabel="Ver perfil de LinkedIn"
+          className={linkClassName}
+        >
+          <LinkedinLogo size={18} weight="regular" />
+          LinkedIn
         </MagneticLink>
         <MagneticLink href="/cv" ariaLabel="Ver CV" className={linkClassName}>
           <FileText size={18} weight="regular" />

@@ -3,13 +3,14 @@ import {
   DownloadSimple,
   EnvelopeSimple,
   GithubLogo,
+  LinkedinLogo,
   Globe,
   MapPin,
 } from "@phosphor-icons/react/dist/ssr";
 import { BackLink } from "@/components/BackLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LangToggle } from "@/components/LangToggle";
-import { EMAIL, GITHUB_USER } from "@/components/InfoSections";
+import { EMAIL, GITHUB_USER, LINKEDIN_URL } from "@/components/InfoSections";
 import { PROJECTS, type Bilingual } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -127,6 +128,12 @@ export default function CvPage() {
                 className="hover:text-accent"
               >
                 github.com/{GITHUB_USER}
+              </a>
+            </li>
+            <li className={contactItem}>
+              <LinkedinLogo size={16} />
+              <a href={LINKEDIN_URL} className="hover:text-accent">
+                linkedin.com/in/gonzalorosano
               </a>
             </li>
             <li className={contactItem}>
