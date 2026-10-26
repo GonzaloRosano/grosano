@@ -10,6 +10,7 @@ export type Project = {
   // Repo publico: tiene pagina de detalle con el README.
   isPublic: boolean;
   demo?: string;
+  image?: string;
   featured: boolean;
 };
 
@@ -49,6 +50,7 @@ export const PROJECTS: Project[] = [
     tech: "Next.js",
     isPublic: false,
     demo: "https://animalscity-ashy.vercel.app",
+    image: "/projects/normativas-animals.png",
     featured: true,
   },
   {
@@ -62,6 +64,7 @@ export const PROJECTS: Project[] = [
     tech: "Astro",
     isPublic: true,
     demo: "https://plasmastudios.vercel.app",
+    image: "/projects/plasmastudios.webp",
     featured: true,
   },
   {
@@ -75,6 +78,7 @@ export const PROJECTS: Project[] = [
     tech: "Astro",
     isPublic: true,
     demo: "https://dfgroup-one.vercel.app",
+    image: "/projects/dfgroup.webp",
     featured: true,
   },
   {
@@ -88,6 +92,7 @@ export const PROJECTS: Project[] = [
     tech: "Astro",
     isPublic: true,
     demo: "https://aruberuto.vercel.app",
+    image: "/projects/aruberuto.webp",
     featured: true,
   },
   {

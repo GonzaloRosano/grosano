@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Lock } from "@phosphor-icons/react/dist/ssr";
 import { PROJECTS, type Project } from "@/data/content";
 import { languageColor } from "@/lib/languageColors";
@@ -12,6 +13,17 @@ function Card({ project }: { project: Project }) {
   const link = projectHref(project);
   const body = (
     <>
+      {project.image && (
+        <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-lg border border-border">
+          <Image
+            src={project.image}
+            alt=""
+            fill
+            sizes="(min-width: 640px) 400px, 100vw"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </div>
+      )}
       <div className="flex items-start justify-between gap-3">
         <span className="font-medium">{project.name}</span>
         {link ? (
@@ -60,7 +72,10 @@ function Card({ project }: { project: Project }) {
 }
 
 export function ProjectsSection() {
-  const featured = PROJECTS.filter((p) => p.featured);
+  // Las cards con captura van primero para que la grilla quede pareja.
+  const featured = PROJECTS.filter((p) => p.featured).sort(
+    (a, b) => Number(!!b.image) - Number(!!a.image)
+  );
   const others = PROJECTS.filter((p) => !p.featured);
 
   return (
