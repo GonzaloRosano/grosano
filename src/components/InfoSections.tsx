@@ -6,7 +6,7 @@ export const EMAIL = "rosanogonzalo@gmail.com";
 export const GITHUB_USER = "GonzaloRosano";
 
 export const linkClassName =
-  "flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]";
+  "flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-foreground transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98]";
 
 const sectionClassName = "w-full max-w-4xl border-t border-border px-6 py-16";
 const headingClassName = "text-xl font-semibold tracking-tight";

@@ -41,7 +41,7 @@ const markdownClassName =
   "markdown-body min-w-0 max-w-none bg-transparent! [&_p:has(img)]:flex [&_p:has(img)]:flex-wrap [&_p:has(img)]:items-center [&_p:has(img)]:gap-2 [&_img]:m-0! [&_img]:inline-block";
 
 const buttonClassName =
-  "flex items-center justify-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm transition-colors duration-200 hover:border-accent hover:text-accent";
+  "flex items-center justify-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-sm transition-colors duration-200 hover:border-accent hover:text-accent";
 
 export default async function ProjectPage(
   props: PageProps<"/projects/[repo]">
@@ -182,7 +182,7 @@ export default async function ProjectPage(
         <nav className="mt-16 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
           <Link
             href={`/projects/${prev.slug}`}
-            className="group flex flex-col gap-1 rounded-xl border border-border p-4 transition-colors duration-200 hover:border-accent"
+            className="group flex flex-col gap-1 rounded-xl border border-border bg-surface p-4 transition duration-200 hover:border-accent hover:shadow-sm"
           >
             <span className="flex items-center gap-1.5 text-xs text-muted">
               <ArrowLeft size={12} />

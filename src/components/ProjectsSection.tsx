@@ -54,7 +54,7 @@ function Card({ project }: { project: Project }) {
   );
 
   const className =
-    "group flex h-full flex-col rounded-xl border border-border p-5 transition-colors duration-200";
+    "group flex h-full flex-col rounded-xl border border-border bg-surface p-5 transition duration-200";
 
   if (!link) return <div className={className}>{body}</div>;
 
@@ -64,7 +64,7 @@ function Card({ project }: { project: Project }) {
       {...(link.external
         ? { target: "_blank", rel: "noreferrer noopener" }
         : {})}
-      className={`${className} hover:border-accent`}
+      className={`${className} hover:border-accent hover:shadow-sm`}
     >
       {body}
     </a>

@@ -7,12 +7,15 @@
 :root {
   --background: #fafafa;
   --foreground: #18181b;
-  --muted: #71717a;
-  --accent: #ff0066;
-  --border: rgb(24 24 27 / 0.1);
+  --muted: #5f5f68;
+  /* En claro el rosa de marca no llega a AA (3.9:1) sobre blanco: se oscurece. */
+  --accent: #d6004f;
+  --border: rgb(24 24 27 / 0.14);
+  --surface: #ffffff;
 }
 
 @theme inline {
+  --color-surface: var(--surface);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -29,6 +32,7 @@
     --muted: #a1a1aa;
     --accent: #ff0066;
     --border: rgb(244 244 245 / 0.1);
+    --surface: transparent;
   }
 }
 
@@ -38,6 +42,7 @@
   --muted: #a1a1aa;
   --accent: #ff0066;
   --border: rgb(244 244 245 / 0.1);
+  --surface: transparent;
 }
 
 body {
@@ -80,6 +85,12 @@ body::-webkit-scrollbar-thumb {
 
 .markdown-body a {
   color: var(--accent) !important;
+}
+
+.markdown-body hr {
+  height: 1px !important;
+  margin: 2rem 0 !important;
+  background-color: var(--border) !important;
 }
 
 .markdown-body hr,
