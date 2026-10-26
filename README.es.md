@@ -1,14 +1,19 @@
 <div align="center">
 
-# 🌐 grosano
+# grosano
 
-**Landing personal de Gonzalo Rosano** — sitio estático, simple y con animaciones cuidadas.
+**Portfolio personal de Gonzalo Rosano, desarrollador frontend.**
+
+[**grosano.vercel.app**](https://grosano.vercel.app)
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
-![License](https://img.shields.io/badge/Licencia-Privado-ff0066?style=flat-square)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-ff0066?style=flat-square)
+
+[English](README.md) · [Español](README.es.md)
 
 </div>
 
@@ -16,81 +21,56 @@
 
 ---
 
-## 📖 Sobre el proyecto
+## Sobre el proyecto
 
-Landing personal, minimalista, pensada para ser simple de mantener. No tiene backend ni base de datos: es 100% **estática**, exportada con Next.js y servida directo por nginx, sin ningún proceso de Node corriendo en el servidor.
+Portfolio bilingüe (inglés / español) pensado para ser simple de mantener. No tiene backend ni base de datos: es una **exportación estática** de Next.js, desplegada en Vercel en cada push a `main`.
 
-La sección de presentación ("About me") **no está escrita a mano en el código** — se trae en build time desde el [README del perfil de GitHub](https://github.com/GonzaloRosano/GonzaloRosano) y se renderiza con el mismo formato visual que usa GitHub.
+## Funcionalidades
 
----
+- Navbar flotante con scroll-spy: píldora arriba en escritorio y barra inferior en móvil
+- Tarjetas de proyecto curadas con capturas, y una página de detalle por cada proyecto público que renderiza su README
+- Página `/cv` y PDF descargable en inglés y español, siempre impreso en tema claro
+- Tema claro y oscuro, e idioma inglés y español, ambos persistidos en `localStorage` y aplicados antes del primer render
+- Animación de entrada con GSAP, scroll suave con Lenis, hover magnético en los links de contacto
+- Respeta `prefers-reduced-motion`
+- SEO: imagen Open Graph, `robots.txt` y `sitemap.xml` generados en build
 
-## ✨ Funcionalidades
-
-- 🎬 Transición de entrada animada con GSAP
-- 🧲 Hover magnético en los links de contacto
-- 🌗 Switch de tema claro/oscuro, persistente en `localStorage`
-- 🖱️ Scroll suave con Lenis + indicador visual de scroll
-- 📄 Sección "About me" con el contenido real del perfil de GitHub, con estilo idéntico al de GitHub (`github-markdown-css`)
-- 📱 Totalmente responsive
-
----
-
-## 🛠️ Stack
+## Stack
 
 | Categoría | Tecnología |
 |---|---|
-| Framework | [Next.js](https://nextjs.org) (exportación estática, `output: "export"`) |
+| Framework | [Next.js](https://nextjs.org) 16, exportación estática (`output: "export"`) |
+| UI | React 19, TypeScript |
 | Estilos | Tailwind CSS v4 + `@tailwindcss/typography` |
-| Animación | [GSAP](https://gsap.com) + [Lenis](https://lenis.darkroom.engineering) |
-| Contenido dinámico | `react-markdown`, `remark-gfm`, `rehype-raw`, `github-markdown-css` |
-| Iconos | [Phosphor Icons](https://phosphoricons.com) |
+| Animación | [GSAP](https://gsap.com) y [Lenis](https://lenis.darkroom.engineering) |
+| Markdown | `react-markdown`, `remark-gfm`, `rehype-raw`, `github-markdown-css` |
+| Íconos | [Phosphor Icons](https://phosphoricons.com) |
 
----
-
-## 🚀 Desarrollo local
+## Desarrollo
 
 ```bash
 npm install
-npm run dev
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build   # exportación estática en out/
 ```
 
-Abrí [http://localhost:3000](http://localhost:3000).
+## Contenido
 
----
+| Qué | Dónde |
+|---|---|
+| Proyectos, resúmenes y stack | `src/data/content.ts` (cada texto tiene `en` y `es`) |
+| Capturas de los proyectos | `public/projects/` |
+| README de cada página de proyecto | se trae en build desde el repo del proyecto y se limpia en `src/lib/readme.ts` |
+| Página de CV | `src/app/cv/page.tsx` |
+| PDF del CV | `public/cv-gonzalo-rosano.pdf` y `public/cv-gonzalo-rosano-en.pdf` |
 
-## 📦 Build
+Para agregar un proyecto, sumá una entrada a `PROJECTS` en `src/data/content.ts` y, si tiene captura, poné la imagen en `public/projects/`.
 
-```bash
-npm run build
-```
+## Deploy
 
-Genera un export estático en `out/` — solo HTML/CSS/JS, sin servidor Node.
+Cada push a `main` dispara un build en Vercel. El sitio es una exportación estática, así que se puede servir desde cualquier hosting estático.
 
----
+## Licencia
 
-## ☁️ Deploy
-
-El sitio se sirve con **nginx puro**, nada de Node corriendo 24/7 en el servidor. `deploy.sh` automatiza todo el ciclo: build, empaquetado y subida por SSH.
-
-```bash
-bash deploy.sh
-```
-
-> Requiere la clave SSH configurada en la ruta indicada dentro del script. La contraseña de `sudo` se puede pasar por la variable de entorno `SUDO_PASS`, o queda a cargo del prompt interactivo.
-
----
-
-## 🔄 Actualizar el "About me"
-
-El contenido de esa sección se trae en build time desde [GonzaloRosano/GonzaloRosano](https://github.com/GonzaloRosano/GonzaloRosano). Para reflejar cambios:
-
-1. Editar el README de ese repo
-2. Correr `bash deploy.sh` acá
-
----
-
-<div align="center">
-
-Hecho por [Gonzalo Rosano](https://github.com/GonzaloRosano)
-
-</div>
+[MIT](LICENSE) © Gonzalo Rosano
