@@ -18,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Gonzalo Rosano",
-  description: "Software Developer",
+  description:
+    "Frontend developer: React, Next.js, Astro, Tauri + Rust. Open to full-time and freelance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

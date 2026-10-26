@@ -1,28 +1,45 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BackLink } from "@/components/BackLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LangToggle } from "@/components/LangToggle";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { ArrowSquareOut, Star } from "@phosphor-icons/react/dist/ssr";
-import { getPublicProjects, getProjectReadme } from "@/lib/github";
+import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import { BackLink } from "@/components/BackLink";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { LangToggle } from "@/components/LangToggle";
+import { PROJECTS } from "@/data/content";
+import { getProjectReadme } from "@/lib/github";
 import { languageColor } from "@/lib/languageColors";
 
-export async function generateStaticParams() {
-  const projects = await getPublicProjects();
-  return projects.map((project) => ({ repo: project.name }));
+const publicProjects = PROJECTS.filter((p) => p.isPublic);
+
+export function generateStaticParams() {
+  return publicProjects.map((project) => ({ repo: project.slug }));
+}
+
+export async function generateMetadata(
+  props: PageProps<"/projects/[repo]">
+): Promise<Metadata> {
+  const { repo } = await props.params;
+  const project = publicProjects.find((p) => p.slug === repo);
+  if (!project) return {};
+  return {
+    title: `${project.name} · Gonzalo Rosano`,
+    description: project.summary.en,
+  };
 }
 
 const markdownClassName =
   "markdown-body min-w-0 max-w-none bg-transparent! [&_p:has(img)]:flex [&_p:has(img)]:flex-wrap [&_p:has(img)]:items-center [&_p:has(img)]:gap-2 [&_img]:m-0! [&_img]:inline-block";
 
+const buttonClassName =
+  "flex items-center justify-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm transition-colors duration-200 hover:border-accent hover:text-accent";
+
 export default async function ProjectPage(
   props: PageProps<"/projects/[repo]">
 ) {
   const { repo } = await props.params;
-  const projects = await getPublicProjects();
-  const project = projects.find((p) => p.name === repo);
+  const project = publicProjects.find((p) => p.slug === repo);
 
   if (!project) notFound();
 
@@ -36,8 +53,6 @@ export default async function ProjectPage(
   const readmeEn = fetchedEn ?? fetchedEs;
   const readmeEs = fetchedEs ?? fetchedEn;
 
-  const techLabel = project.framework ?? project.language;
-
   return (
     <>
       <ThemeToggle />
@@ -47,54 +62,37 @@ export default async function ProjectPage(
         <BackLink />
 
         <div className="mt-8 flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-10">
-          <div className="flex flex-col gap-2 lg:sticky lg:top-16 lg:w-72 lg:shrink-0">
+          <div className="flex flex-col gap-3 lg:sticky lg:top-16 lg:w-72 lg:shrink-0">
             <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               {project.name}
             </h1>
 
-            {project.descriptionEn && (
-              <p className="lang-en text-base text-muted">
-                {project.descriptionEn}
-              </p>
-            )}
-            {project.descriptionEs && (
-              <p className="lang-es text-base text-muted">
-                {project.descriptionEs}
-              </p>
-            )}
+            <p className="lang-en text-base text-muted">
+              {project.summary.en}
+            </p>
+            <p className="lang-es text-base text-muted">
+              {project.summary.es}
+            </p>
 
-            <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-muted">
-              {techLabel && (
-                <span className="flex items-center gap-1.5">
+            <ul className="mt-1 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <li
+                  key={tech}
+                  className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted"
+                >
                   <span
-                    className="h-2.5 w-2.5 rounded-full border border-foreground/30"
-                    style={{ backgroundColor: languageColor(techLabel) }}
+                    className="h-2 w-2 rounded-full border border-foreground/30"
+                    style={{ backgroundColor: languageColor(tech) }}
                   />
-                  {techLabel}
-                </span>
-              )}
-              {project.stars > 0 && (
-                <span className="flex items-center gap-1">
-                  <Star size={14} weight="fill" />
-                  {project.stars}
-                </span>
-              )}
-            </div>
+                  {tech}
+                </li>
+              ))}
+            </ul>
 
-            <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap lg:flex-col lg:items-stretch">
-              <a
-                href={`https://github.com/GonzaloRosano/${project.name}`}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="flex items-center justify-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm transition-colors duration-200 hover:border-accent hover:text-accent"
-              >
-                <span className="lang-en">View on GitHub</span>
-                <span className="lang-es">Ver en GitHub</span>
-                <ArrowSquareOut size={14} />
-              </a>
-              {project.homepage && (
+            <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap lg:flex-col">
+              {project.demo && (
                 <a
-                  href={project.homepage}
+                  href={project.demo}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm text-white transition-opacity duration-200 hover:opacity-90"
@@ -104,6 +102,16 @@ export default async function ProjectPage(
                   <ArrowSquareOut size={14} />
                 </a>
               )}
+              <a
+                href={`https://github.com/GonzaloRosano/${project.slug}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className={buttonClassName}
+              >
+                <span className="lang-en">View on GitHub</span>
+                <span className="lang-es">Ver en GitHub</span>
+                <ArrowSquareOut size={14} />
+              </a>
             </div>
           </div>
 
