@@ -33,7 +33,7 @@ const SKILLS: { label: Bilingual; items: string[] }[] = [
   },
 ];
 
-const CV_PROJECTS = ["normativas-animals", "plasmastudios", "dfgroup", "onasor"];
+const CV_PROJECTS = ["normativas-animals", "plasmastudios", "dfgroup", "aruberuto"];
 
 function projectLink(slug: string): string {
   const project = PROJECTS.find((p) => p.slug === slug);
