@@ -4,6 +4,7 @@ import { ThemeScript } from "@/components/ThemeToggle";
 import { LangScript } from "@/components/LangToggle";
 import { RevealScript } from "@/components/IntroReveal";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,9 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Gonzalo Rosano",
   description:
     "Frontend developer: React, Next.js, Astro, Tauri + Rust. Open to full-time and freelance.",
+  openGraph: {
+    type: "website",
+    siteName: "Gonzalo Rosano",
+    title: "Gonzalo Rosano - Frontend developer",
+    description: "React, Next.js, Astro, Tauri + Rust. Open to full-time and freelance.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
