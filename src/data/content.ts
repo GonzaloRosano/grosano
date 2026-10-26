@@ -68,8 +68,8 @@ export const PROJECTS: Project[] = [
     slug: "dfgroup",
     name: "Dark Feather Group",
     summary: {
-      en: "Website for a gaming community group.",
-      es: "Sitio web de un grupo de comunidades gamer.",
+      en: "Website for a creative collective and digital studio.",
+      es: "Sitio web de un colectivo creativo y estudio digital.",
     },
     stack: ["Astro", "Vercel"],
     tech: "Astro",
