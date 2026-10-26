@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
     tech: "Astro",
     isPublic: true,
     demo: "https://plasmastudios.vercel.app",
-    image: "/projects/plasmastudios.webp",
+    image: "/projects/plasmastudios.png",
     featured: true,
   },
   {
