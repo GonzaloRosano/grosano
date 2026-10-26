@@ -129,9 +129,9 @@ export async function getProjectReadme(
   filename: string = "README.md"
 ): Promise<string | null> {
   try {
+    // raw.githubusercontent no cuenta contra el rate limit de la API (403 sin token).
     const res = await fetch(
-      `https://api.github.com/repos/${GITHUB_USER}/${repo}/contents/${filename}`,
-      { headers: authHeaders({ Accept: "application/vnd.github.raw+json" }) }
+      `https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${filename}`
     );
     if (!res.ok) return null;
     return await res.text();

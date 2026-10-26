@@ -52,17 +52,6 @@ export default function Home() {
               </span>
             </p>
 
-            <p data-reveal className="mt-3 text-sm text-muted sm:text-base">
-              <span className="lang-en">
-                React · Next.js · Astro · Tauri + Rust. At Quanam, working with
-                clients in different countries.
-              </span>
-              <span className="lang-es">
-                React · Next.js · Astro · Tauri + Rust. En Quanam, trabajando
-                con clientes de distintos países.
-              </span>
-            </p>
-
             <p
               data-reveal
               className="mt-6 flex items-center gap-2 text-xs text-muted"
