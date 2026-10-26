@@ -151,7 +151,40 @@ export default async function ProjectPage(
           </div>
         )}
 
+        {project.overview && (
+          <section className="mt-12 grid gap-8 md:grid-cols-[3fr_2fr]">
+            <div>
+              <h2 className="text-xl font-semibold tracking-tight">
+                <span className="lang-en">Overview</span>
+                <span className="lang-es">Resumen</span>
+              </h2>
+              <p className="lang-en mt-4 text-muted">{project.overview.en}</p>
+              <p className="lang-es mt-4 text-muted">{project.overview.es}</p>
+            </div>
+            {project.highlights && (
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight">
+                  <span className="lang-en">Highlights</span>
+                  <span className="lang-es">Puntos clave</span>
+                </h2>
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted marker:text-accent">
+                  {project.highlights.map((h) => (
+                    <li key={h.en}>
+                      <span className="lang-en">{h.en}</span>
+                      <span className="lang-es">{h.es}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
+
         <div className="mt-12 min-w-0 border-t border-border pt-10">
+          <h2 className="mb-6 text-xl font-semibold tracking-tight">
+            <span className="lang-en">Documentation</span>
+            <span className="lang-es">Documentación</span>
+          </h2>
           {readmeEn && (
             <div className={`lang-en ${markdownClassName}`}>
               <ReactMarkdown
