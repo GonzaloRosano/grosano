@@ -138,3 +138,13 @@ html.reveal-pending [data-reveal] {
   display: none;
 }
 
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+}

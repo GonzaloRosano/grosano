@@ -1,4 +1,4 @@
-import { EnvelopeSimple, GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { EnvelopeSimple, FileText, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { MagneticLink } from "@/components/MagneticLink";
 import { STACK } from "@/data/content";
 
@@ -96,6 +96,10 @@ export function ContactSection() {
         >
           <GithubLogo size={18} weight="regular" />
           GitHub
+        </MagneticLink>
+        <MagneticLink href="/cv" ariaLabel="Ver CV" className={linkClassName}>
+          <FileText size={18} weight="regular" />
+          CV
         </MagneticLink>
       </div>
     </section>
